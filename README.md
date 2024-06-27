@@ -47,3 +47,49 @@ Em resumo, o API Gateway funciona como uma porta de entrada para as APIs, simpli
 - Adiciona complexidade na arquitetura;
 - Precisa de um cuidado extra, devido a disponibilidade **(ter no mínimo 3 instâncias)**;
 - É uma ferramenta que precisa de manutenção/atualização devido as vulnerabilidades.
+
+---
+
+## Kong API Gateway
+
+O Kong atua como um intermediário entre clientes e serviços, fornecendo recursos como autenticação, autorização, monitoramento,
+limitação de taxa, transformação de dados, entre outros.
+
+No site: https://docs.konghq.com/hub/ podemos adicionar plugins ao nosso Kong para nos ajudar a configurar o API Gateway.
+
+### Configurações do Kong
+
+Caso a imagem `claudioed/kong-fc` no arquivo `kong_compose.yml` não funcione, você pode criar uma imagem e subir ela utilizando o
+exemplo em `/docker/Dockerfile`.
+
+> **O que é o Konga ?**
+> 
+> Interface administrativa para o Kong API Gateway;
+> 
+> Visualização de métricas das instâncias;
+> 
+> Controle de usuários.
+> 
+> Site: https://github.com/pantsel/konga
+
+**Subindo o docker-compose:**
+
+Com o seu terminal aberto na pasta `./compose`, rode o comando: `docker-compose -f kong_compose.yml up`.
+
+Ao carregar todos os containers, acesse seu navegador: `localhost:8085`, será aberto a tela do Konga.
+
+- Crie um login para ter acesso ao portal.
+
+### Services no Kong
+
+A função **services** é utilizada para configurar e gerenciar os serviços que serão expostos através do API Gateway Kong.
+
+Esses serviços representam as aplicações ou microserviços que serão acessados pelos clientes através da API.
+
+**Vamos configurar o microserviço de bets do `kong_compose.yml`**
+
+Na interface do Konga, cadastre um novo serviço:
+![img.png](readme_images/img.png)
+
+---
+
