@@ -98,17 +98,17 @@ Na interface do Konga, cadastre um novo serviço:
 **Vamos configurar a rota no Konga**
 
 Na interface do Konga, clique no serviço que foi criado acima e clique em `Routes`:
-![img.png](img.png)
-![img_1.png](img_1.png)
+![img.png](readme_images/img.png)
+![img_1.png](readme_images/img_1.png)
 
 Após essas configurações, clique em `Submit Route`.
 
 > No `kong_compose.yml`, temos o container do Kong e fazemos um forward da porta 8000 do proxy para a porta 80 da nossa máquina.
-![img_2.png](img_2.png)
+![img_2.png](readme_images/img_2.png)
 
 Com isso, conseguimos acessar o serviço de `bets` e criar uma aposta pelo **Postman**:
 
-![img_3.png](img_3.png)
+![img_3.png](readme_images/img_3.png)
 
 E no Body, selecione a opção `raw`, `JSON` e cole o código abaixo:
 
@@ -122,7 +122,6 @@ E no Body, selecione a opção `raw`, `JSON` e cole o código abaixo:
 
 >E ao enviar, você deverá receber uma mensagem semelhante a:
 ![img_4.png](readme_images/img_4.png)
-![img_4.png](img_4.png)
 
 ## Configurando Plugins
 
@@ -139,11 +138,35 @@ Para isso, vamos utilizar o plugin `Correlation ID`, que gera um ID único para 
 das requisições: https://docs.konghq.com/hub/kong-inc/correlation-id/
 
 - Na interface do Konga, vamos abrir a aba de `Plugins`:
-![img_5.png](img_5.png)
+![img_5.png](readme_images/img_5.png)
 
 - Configure e adicione o `Correlation ID`:
-![img_6.png](img_6.png)
+![img_6.png](readme_images/img_6.png)
 
 E ao enviar uma nova request pelo `postman`, podemos ver que foi adicionado um **novo parametro** no Header da response:
-![img_7.png](img_7.png)
+![img_7.png](readme_images/img_7.png)
 
+
+### Configurando o plugin `Rate Limiting`
+
+Para isso, vamos utilizar o plugin `Rate Limiting`, que permite controlar a taxa de requisições que um determinado IP
+pode fazer a uma API em um determinado período de tempo: https://docs.konghq.com/hub/kong-inc/rate-limiting/
+
+Na interface do Konga, vamos adicionar esse plugin no serviço de `bets`:
+![img_8.png](readme_images/img_8.png)
+
+Ao clicar em `+ ADD PLUGIN`:
+![img_9.png](readme_images/img_9.png)
+
+E configure com as informações abaixo:
+
+| Campo               | Valor | Descrição                                                                                                                                  |
+|---------------------|-------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| minute              | 5     | Máximo de requisições por minuto                                                                                                           |
+| limit by            | ip    | Limita as requisições com base no ip do Cliente                                                                                            |
+| policy              | local | Local: Permite o máximo de requisições por minuto em cada instância. Cluster: Permite o máximo de requisições independente das instâncias. |
+| fault tolerant      | yes   | Caso a contagem do rate limiting falhar ele permitirá a requisição                                                                         |
+| hide client headers | yes   | Esconde a informação de quantas requisições faltam para limitar                                                                            |
+
+Com o plugin aplicado, ao fazermos mais de **5 requests** para a api `bets`, receberemos uma mensagem de erro:
+![img_10.png](readme_images/img_10.png)
