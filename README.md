@@ -80,7 +80,7 @@ Ao carregar todos os containers, acesse seu navegador: `localhost:8085`, será a
 
 - Crie um login para ter acesso ao portal.
 
-### Configurando as Services
+## Configurando as Services
 
 A função **services** é utilizada para configurar e gerenciar os serviços que serão expostos através do API Gateway Kong.
 
@@ -91,7 +91,7 @@ Esses serviços representam as aplicações ou microserviços que serão acessad
 Na interface do Konga, cadastre um novo serviço:
 ![img.png](readme_images/service.png)
 
-### Configurando as Rotas
+## Configurando as Rotas
 
 É o "caminho" de url que permitirá que um serviço seja acessado pelo Kong API Gateway.
 
@@ -193,4 +193,14 @@ Agora ao chamar a requisição, o body da resposta terá o campo `proxied`:
 E nos Headers, terá o header `api`:
 ![img_14.png](readme_images/img_14.png)
 
+
+## O que são Consumers
+
+Representa um consumidor de APIs. Ele pode ser um **usuário final**, um **aplicativo** ou qualquer entidade que faça
+solicitações para consumir os serviços disponibilizados por uma API.
+
+Os **Consumers no Kong** são usados para controlar o **acesso**, **autenticação** e **autorização** dos consumidores às APIs
+gerenciadas pelo Kong API Gateway.
+
+### Configurando consumer de usuário
 
