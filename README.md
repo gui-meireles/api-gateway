@@ -170,3 +170,27 @@ E configure com as informações abaixo:
 
 Com o plugin aplicado, ao fazermos mais de **5 requests** para a api `bets`, receberemos uma mensagem de erro:
 ![img_10.png](readme_images/img_10.png)
+
+
+### Configurando o plugin `Response Transformer`
+
+É uma funcionalidade que permite modificar a resposta de uma API antes de ser enviada de volta ao cliente.
+
+Com ele, é possível realizar transformações nos dados, como adicionar ou remover campos, alterar formatos, entre outras customizações.
+
+Na interface do Konga, vamos adicionar esse plugin no serviço de `bets`:
+![img_8.png](readme_images/img_8.png)
+
+Ao clicar em `+ ADD PLUGIN`:
+![img_11.png](readme_images/img_11.png)
+
+E para exemplo, vamos configurar como na imagem abaixo:
+![img_12.png](readme_images/img_12.png)
+
+Agora ao chamar a requisição, o body da resposta terá o campo `proxied`:
+![img_13.png](readme_images/img_13.png)
+
+E nos Headers, terá o header `api`:
+![img_14.png](readme_images/img_14.png)
+
+
