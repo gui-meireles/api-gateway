@@ -98,17 +98,17 @@ Na interface do Konga, cadastre um novo serviço:
 **Vamos configurar a rota no Konga**
 
 Na interface do Konga, clique no serviço que foi criado acima e clique em `Routes`:
-![img.png](readme_images/img.png)
-![img_1.png](readme_images/img_1.png)
+![img.png](img.png)
+![img_1.png](img_1.png)
 
 Após essas configurações, clique em `Submit Route`.
 
 > No `kong_compose.yml`, temos o container do Kong e fazemos um forward da porta 8000 do proxy para a porta 80 da nossa máquina.
-![img_2.png](readme_images/img_2.png)
+![img_2.png](img_2.png)
 
 Com isso, conseguimos acessar o serviço de `bets` e criar uma aposta pelo **Postman**:
 
-![img_3.png](readme_images/img_3.png)
+![img_3.png](img_3.png)
 
 E no Body, selecione a opção `raw`, `JSON` e cole o código abaixo:
 
@@ -122,3 +122,28 @@ E no Body, selecione a opção `raw`, `JSON` e cole o código abaixo:
 
 >E ao enviar, você deverá receber uma mensagem semelhante a:
 ![img_4.png](readme_images/img_4.png)
+![img_4.png](img_4.png)
+
+## Configurando Plugins
+
+Os plugins no Kong são funcionalidades adicionais que podem ser adicionadas ao API Gateway para estender suas capacidades,
+podem ser configurados nas Rotas, Serviços, Consumers e Globalmente.
+
+> Alguns exemplos de plugins incluem autenticação, autorização, transformação de dados, rate limiting, logging, entre outros.
+
+E você pode escreve-los usando a linguagem **lua, javascript e golang** ou utilizar os que já existem na comunidade.
+
+### Configurando o plugin `Correlation ID`
+
+Para isso, vamos utilizar o plugin `Correlation ID`, que gera um ID único para cada solicitação e o inclui nos cabeçalhos
+das requisições: https://docs.konghq.com/hub/kong-inc/correlation-id/
+
+- Na interface do Konga, vamos abrir a aba de `Plugins`:
+![img_5.png](img_5.png)
+
+- Configure e adicione o `Correlation ID`:
+![img_6.png](img_6.png)
+
+E ao enviar uma nova request pelo `postman`, podemos ver que foi adicionado um **novo parametro** no Header da response:
+![img_7.png](img_7.png)
+
