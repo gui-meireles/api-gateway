@@ -215,7 +215,7 @@ Na aba de **Consumers**, clique em `+CREATE CONSUMER`
 **Vamos criar um Basic Auth para nosso usuário final:**
 ![img_16.png](readme_images/img_16.png)
 
-**Agora vamos configurar o Basic Auth na aplicação de apostas:**
+**Agora vamos configurar o Basic Auth:**
 
 - Abra a aba de `Services`, clique no app `bets`, em `Plugins` e logo após em `+ADD PLUGIN`.
 - Na tela que abrir, clique em **Authentication** e **Basic Auth**.
@@ -224,7 +224,7 @@ Na aba de **Consumers**, clique em `+CREATE CONSUMER`
 
 * Com isso, ao tentar fazer uma **request**, retornará o erro `401 Unauthorized`.
 
-Para resolver o problema:
+**Para resolver o problema:**
 * Coloque seu `{username}:{senha}` criada no **Consumer** no site: https://www.base64encode.org/
 ![img_19.png](readme_images/img_19.png)
 * Com seu **login criptografado**, cole no **Header** da request:
@@ -234,3 +234,18 @@ Para resolver o problema:
 
 **Vamos criar uma API Key para nosso app de apostas:**
 ![img_17.png](readme_images/img_17.png)
+
+**Agora vamos configurar o Key Auth:**
+
+- Remova o plugin de `Basic Auth`.
+- Abra a aba de `Services`, clique no app `bets`, em `Plugins` e logo após em `+ADD PLUGIN`.
+- Na tela que abrir, clique em **Authentication** e **Key Auth**.
+- Adicione o plugin conforme a **imagem abaixo**.
+![img_21.png](readme_images%2Fimg_21.png)
+
+**Para resolver o problema de Unauthorized:**
+* Copie o token que foi gerado no **Consumer** `app-apostas` (imagem acima).
+* Cole o token no **Header** da request:
+![img_22.png](readme_images/img_22.png)
+
+---
