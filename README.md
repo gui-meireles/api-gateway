@@ -202,5 +202,18 @@ solicitações para consumir os serviços disponibilizados por uma API.
 Os **Consumers no Kong** são usados para controlar o **acesso**, **autenticação** e **autorização** dos consumidores às APIs
 gerenciadas pelo Kong API Gateway.
 
-### Configurando consumer de usuário
+### Configurando consumers
 
+**Criando consumer de usuário final:**
+
+Na aba de **Consumers**, clique em `+CREATE CONSUMER`
+![img_15.png](readme_images/img_15.png)
+
+> Faça a mesma coisa para criar o consumer do app, com o username = `app-apostas` e tag = `app`.
+
+
+**Vamos criar um login e senha para nosso usuário final:**
+![img_16.png](readme_images/img_16.png)
+
+**Vamos criar uma API Key para nosso app de apostas:**
+![img_17.png](readme_images/img_17.png)
