@@ -266,3 +266,20 @@ No kong_compose.yml temos os seguintes containers que são responsáveis por iss
 - Abra a aba de `Plugins` e clique em `+ ADD GLOBAL PLUGINS`.
 ![img_23.png](readme_images/img_23.png)
 - Ao abrir a tela para configurar o Prometheus, apenas clique em **Adicionar**.
+
+## Logging
+
+É uma funcionalidade que permite registrar informações sobre as requisições HTTP que passam pelo API Gateway.
+
+No kong_compose.yml temos os seguintes containers que são responsáveis por isso:
+
+- **Fluent-bit:** Coleta as métricas de um lugar e encaminha para outro;
+- **ElasticSearch:** Utilizado para indexar, pesquisar e analisar grandes volumes de dados de forma eficiente e em tempo real;
+- **Kibana:** Ferramenta que mostra visualmente a coleta dos logs.
+
+**Vamos adicionar o plugin de TCP LOG no Serviço de bets:**
+
+- Abra a aba de `Services`, clique no app `bets`, em `Plugins` e logo após em `+ADD PLUGIN`.
+![img_24.png](readme_images/img_24.png)
+- Adicione as configurações abaixo:
+![img_25.png](readme_images/img_25.png)
