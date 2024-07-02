@@ -249,3 +249,20 @@ Na aba de **Consumers**, clique em `+CREATE CONSUMER`
 ![img_22.png](readme_images/img_22.png)
 
 ---
+
+## Monitoramento e Observabilidade
+
+O `monitoramento` geralmente envolve a coleta de **métricas e logs** para identificar possíveis problemas e tendências
+de uso, enquanto a `observabilidade` vai além, permitindo uma compreensão mais profunda do sistema e a capacidade de
+**investigar eventos específicos** de forma mais detalhada.
+
+No kong_compose.yml temos os seguintes containers que são responsáveis por isso:
+
+- **Grafana:** Exibe as métricas de forma visual;
+- **Node_exporter:** Coleta as métricas do ecossistema;
+- **Prometheus:** Coleta as métricas relacionadas ao desempenho, tráfego e uso das APIs gerenciadas pelo Kong.
+
+**Vamos adicionar o plugin do Prometheus no Kong:**
+- Abra a aba de `Plugins` e clique em `+ ADD GLOBAL PLUGINS`.
+![img_23.png](readme_images/img_23.png)
+- Ao abrir a tela para configurar o Prometheus, apenas clique em **Adicionar**.
