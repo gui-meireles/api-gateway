@@ -283,3 +283,25 @@ No kong_compose.yml temos os seguintes containers que são responsáveis por iss
 ![img_24.png](readme_images/img_24.png)
 - Adicione as configurações abaixo:
 ![img_25.png](readme_images/img_25.png)
+
+## Tracing
+
+É uma técnica utilizada para monitorar e rastrear o fluxo de uma requisição em um sistema distribuído, permitindo
+identificar e analisar o caminho percorrido por uma solicitação, desde o ponto de entrada até a saída.
+
+No kong_compose.yml temos os seguintes containers que são responsáveis por isso:
+
+- **Jaeger:** Coleta de tracing distribuídos;
+- **ElasticSearch:** Utilizado para indexar, pesquisar e analisar grandes volumes de dados de forma eficiente e em tempo real;
+- **Kibana:** Ferramenta que mostra visualmente a coleta dos logs.
+
+**Vamos adicionar o plugin de TCP LOG no Serviço de bets:**
+
+- Abra a aba de `Services`, clique no app `bets`, em `Plugins` e logo após em `+ADD PLUGIN`.
+![img_26.png](readme_images/img_26.png)
+- Adicione as configurações abaixo:
+![img_27.png](readme_images/img_27.png)
+- Faça algumas requisições para a API `bets`.
+- Acesse o **jaeger**: http://localhost:16686/search
+- E Ao buscar a service `kong`, você terá o log das requisições que foram enviadas.
+![img_28.png](readme_images/img_28.png)
