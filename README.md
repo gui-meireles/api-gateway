@@ -48,6 +48,14 @@ Em resumo, o API Gateway funciona como uma porta de entrada para as APIs, simpli
 - Precisa de um cuidado extra, devido a disponibilidade **(ter no mínimo 3 instâncias)**;
 - É uma ferramenta que precisa de manutenção/atualização devido as vulnerabilidades.
 
+### Principais Conceitos
+
+| Conceito            | Descrição                                                                                                  |
+|---------------------|------------------------------------------------------------------------------------------------------------|
+| **Downstream**      | Refere-se ao cliente que está fazendo a requisição para o API Gateway                                      |
+| **Proxy**           | O Kong atua como um proxy reverso, recebendo as requisições do downstream e encaminhando para os Upstreams |
+| **Upstream**        | São os serviços ou aplicações que estão sendo expostos pelo API Gateway.                                   |
+
 ---
 
 ## Kong API Gateway
